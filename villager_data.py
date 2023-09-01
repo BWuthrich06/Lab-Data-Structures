@@ -126,7 +126,7 @@ def all_data(filename):
 
     return all_data
 
-print(all_data("villagers.csv"))
+# print(all_data("villagers.csv"))
 
 def find_motto(filename, villager_name):
     """Return the villager's motto.
@@ -143,6 +143,20 @@ def find_motto(filename, villager_name):
     """
 
     # TODO: replace this with your code
+    file = open(filename)
+
+    for line in file:
+        
+        list = line.split("|")
+        name = list[0]
+        motto = list[4]
+
+        if name == villager_name:
+            return motto
+            
+        
+        
+# print(find_motto("villagers.csv", "Rodeo"))
 
 
 def find_likeminded_villagers(filename, villager_name):
