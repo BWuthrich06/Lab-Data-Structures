@@ -20,7 +20,7 @@ def all_species(filename):
 
     return species
 
-# species = (all_species("villagers.csv"))
+    # print(all_species("villagers.csv"))
 
 
 def get_villagers_by_species(filename, search_string="All"):
@@ -100,7 +100,7 @@ def all_names_by_hobby(filename):
         
         
 
-print(all_names_by_hobby("villagers.csv"))
+# print(all_names_by_hobby("villagers.csv"))
 
 
 def all_data(filename):
@@ -115,13 +115,18 @@ def all_data(filename):
     Return:
         - list[tuple[str]]: a list of tuples containing strings
     """
-
+    file = open(filename)
     all_data = []
-
-    # TODO: replace this with your code
+    
+    for line in file:
+        
+        list = line.split("|")
+        all_data.append(tuple(list))
+        
 
     return all_data
 
+print(all_data("villagers.csv"))
 
 def find_motto(filename, villager_name):
     """Return the villager's motto.
