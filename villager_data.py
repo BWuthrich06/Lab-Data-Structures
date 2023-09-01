@@ -46,7 +46,9 @@ def get_villagers_by_species(filename, search_string="All"):
         sorted_villagers = sorted(villagers)
 
     return sorted_villagers
-print(get_villagers_by_species("villagers.csv", "Bear"))
+# print(get_villagers_by_species("villagers.csv", "Bear"))
+
+
 
 def all_names_by_hobby(filename):
     """Return a list of lists containing villagers' names, grouped by hobby.
@@ -59,8 +61,46 @@ def all_names_by_hobby(filename):
     """
 
     # TODO: replace this with your code
+    
+    fitness = []
+    nature = []
+    education = []
+    music = []
+    play = []
+    fashion = []
+    
+    file = open(filename)
 
-    return []
+    for line in file:
+        
+        list = line.split("|")
+        name = list[0]
+        hobby = list[3]
+        
+        if hobby == "Fitness":
+            fitness.append(name)
+        elif hobby == "Nature":
+            nature.append(name)
+        elif hobby == "Education":
+            education.append(name)
+        elif hobby == "Music":
+            music.append(name)
+        elif hobby == "Play":
+            play.append(name)
+        elif hobby == "Fashion":
+            fashion.append(name)
+       
+    return [
+        sorted(fitness),
+        sorted(nature),
+        sorted(education),
+        sorted(music),
+        sorted(play),
+        sorted(fashion)]
+        
+        
+
+print(all_names_by_hobby("villagers.csv"))
 
 
 def all_data(filename):
