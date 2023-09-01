@@ -120,8 +120,8 @@ def all_data(filename):
     
     for line in file:
         
-        list = line.split("|")
-        all_data.append(tuple(list))
+        data = line.split("|")
+        all_data.append(tuple(data))
         
 
     return all_data
@@ -141,6 +141,8 @@ def find_motto(filename, villager_name):
     Return:
         - str: the villager's motto or None
     """
+
+    # villager_data = all_data(filename)
 
     
     file = open(filename)
@@ -174,29 +176,29 @@ def find_likeminded_villagers(filename, villager_name):
         {'Bella', ..., 'Carmen'}
     """
 
-    
-    file = open(filename)
 
     common_personality = set()
     villagers_personality = None
 
-    for line in file:
+    villager_data = all_data(filename)
+    # [
+    #  (name, species, motto...) ,
+    #   (name, species, motto...)
+    # ]
 
-        list = line.split("|")
+    for line in villager_data: # line = (name, species, motto...)     
         
-        name = list[0]
-        personality = list[2]
+        name = line[0]
+        personality = line[2]
 
         if villager_name == name:
              villagers_personality = personality
              break
 
-    for line in file:
-
-        list = line.split("|")
-        
-        name = list[0]
-        personality = list[2]
+    for line in villager_data:
+            
+        name = line[0]
+        personality = line[2]
 
         if personality == villagers_personality:
             common_personality.add(name)
